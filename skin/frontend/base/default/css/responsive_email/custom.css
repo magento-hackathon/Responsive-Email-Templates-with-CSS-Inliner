@@ -1,3 +1,12 @@
+/* Ink style overrides */
+h1 {font-size: 22px;}
+h2 {font-size: 20px;}
+h3 {font-size: 18px;}
+h4 {font-size: 16px;}
+h5 {font-size: 15px;}
+h6 {font-size: 14px;}
+
+/* Magento custom styles */
 .credentials {
     border: 1px solid #E0E0E0;
     font-size:12px;
