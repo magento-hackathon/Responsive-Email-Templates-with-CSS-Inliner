@@ -7,6 +7,9 @@
  * @package    Hackathon_ResponsiveEmail
  * @author     Andreas von Studnitz <avs@integer-net.de>
  */
+
+use TijsVerkoyen\CssToInlineStyles;
+
 class Hackathon_ResponsiveEmail_Model_Core_Translate extends Mage_Core_Model_Translate
 {
     /**
@@ -19,6 +22,8 @@ class Hackathon_ResponsiveEmail_Model_Core_Translate extends Mage_Core_Model_Tra
      */
     public function getTemplateFile($file, $type, $localeCode = null)
     {
+        $useInk = false;
+
         if (is_null($localeCode) || preg_match('/[^a-zA-Z_]/', $localeCode)) {
             $localeCode = $this->getLocale();
         }
@@ -26,7 +31,9 @@ class Hackathon_ResponsiveEmail_Model_Core_Translate extends Mage_Core_Model_Tra
         if ($type == 'email') {
             // try to get file from alternative path app/locale/xx_XX/template/email_responsive/
             $filePath = $this->_getFilePath($file, 'email_responsive', $localeCode);
-            if (!file_exists($filePath)) {
+            if (file_exists($filePath)) {
+                $useInk = true;
+            } else {
                 $filePath = $this->_getFilePath($file, $type, $localeCode);
             }
         } else {
@@ -38,7 +45,9 @@ class Hackathon_ResponsiveEmail_Model_Core_Translate extends Mage_Core_Model_Tra
 
         $templateText = (string)$ioAdapter->read($filePath);
 
-        $templateText = $this->addInlineStyles($templateText);
+        if ($useInk) {
+            $templateText = $this->addInlineStyles($templateText);
+        }
 
         return $templateText;
     }
@@ -79,16 +88,41 @@ class Hackathon_ResponsiveEmail_Model_Core_Translate extends Mage_Core_Model_Tra
      */
     public function addInlineStyles($templateText)
     {
-        $newStyles = $this->getCssFileContent('ink.css') . $this->getCssFileContent('custom.css');
+        $subject = '';
+        $existingStyles = '';
 
         if (preg_match('/<!--@styles\s*(.*?)\s*@-->/s', $templateText, $matches)) {
             $existingStyles = $matches[1];
-            $newStyles = '<!--@styles' . "\n" . $existingStyles . "\n" . $newStyles . '@-->' . "\n";
-            $templateText = str_replace($matches[0], $newStyles, $templateText);
-        } else {
-            $newStyles = '<!--@styles' . "\n" . $newStyles . "\n" . '@-->' . "\n";
-            $templateText = $newStyles . $templateText;
         }
+
+        if (preg_match('/<!--@subject\s*(.*?)\s*@-->/u', $templateText, $matches)) {
+            $subject = $matches[1];
+        }
+
+        $newStyles = $this->getCssFileContent('ink.css') . $this->getCssFileContent('custom.css');
+
+        $cssToInlineStyles = new TijsVerkoyen_CssToInlineStyles(
+            $this->_getRawTemplateHtml($templateText),
+            $existingStyles . "\n" . $newStyles
+        );
+
+        return '<!--@subject ' . $subject . ' @-->' . "\n" . $cssToInlineStyles->convert();
+    }
+
+    /**
+     * @param string $templateText
+     * @return string
+     */
+    protected function _getRawTemplateHtml($templateText)
+    {
+        if (preg_match('/<!--@(.*?)\s*@-->/s', $templateText, $matches)) {
+            $templateText = str_replace($matches[0], '', $templateText);
+        }
+
+        /**
+         * Remove comment lines
+         */
+        $templateText = preg_replace('#\{\*.*\*\}#suU', '', $templateText);
 
         return $templateText;
     }
