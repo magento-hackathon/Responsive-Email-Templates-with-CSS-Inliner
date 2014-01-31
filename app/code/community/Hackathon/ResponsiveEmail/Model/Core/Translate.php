@@ -74,10 +74,12 @@ class Hackathon_ResponsiveEmail_Model_Core_Translate extends Mage_Core_Model_Tra
      *
      * @param string $templateText
      * @return string
+     * @todo Don't do this when creating transactional emails.
+     * We will need to implement this again in an "afterLoad" observer of the transactional email template.
      */
     public function addInlineStyles($templateText)
     {
-        $newStyles = 'body {background: red;}'; /** @TODO: replace with real content */
+        $newStyles = $this->getCssFileContent('ink.css') . $this->getCssFileContent('custom.css');
 
         if (preg_match('/<!--@styles\s*(.*?)\s*@-->/s', $templateText, $matches)) {
             $existingStyles = $matches[1];
@@ -89,5 +91,22 @@ class Hackathon_ResponsiveEmail_Model_Core_Translate extends Mage_Core_Model_Tra
         }
 
         return $templateText;
+    }
+
+    /**
+     * @param string $filename
+     * @return string
+     */
+    public function getCssFileContent($filename)
+    {
+        $filename = Mage::getDesign()->getFilename(
+            'css' . DS . 'responsive_email' . DS . $filename,
+            array(
+                '_type' => 'skin',
+                '_default' => false,
+            )
+        );
+
+        return file_get_contents($filename);
     }
 }
