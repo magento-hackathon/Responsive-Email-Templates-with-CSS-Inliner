@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Hackathon_ResponsiveEmail>
+            <version>0.1.0</version>
+        </Hackathon_ResponsiveEmail>
+    </modules>
+    <global>
+        <models>
+            <responsive_email>
+                <class>Hackathon_ResponsiveEmail_Model</class>
+            </responsive_email>
+            <core>
+                <rewrite>
+                    <translate>Hackathon_ResponsiveEmail_Model_Core_Translate</translate>
+                </rewrite>
+            </core>
+        </models>
+    </global>
+</config>
