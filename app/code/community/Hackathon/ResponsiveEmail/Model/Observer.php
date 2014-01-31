@@ -10,7 +10,13 @@ class Hackathon_ResponsiveEmail_Model_Observer
 {
     public function coreAbstractLoadAfter(Varien_Event_Observer $observer)
     {
-        if ($observer->getObject() instanceof Mage_Core_Model_Email_Template){
+        if ($observer->getObject() instanceof Mage_Core_Model_Email_Template) {
+
+            if (Mage::app()->getRequest()->getControllerName() == 'system_email_template'
+                && Mage::app()->getRequest()->getActionName() == 'edit') {
+                // Don't inline Styles when loading a template in backend
+                return;
+            }
 
             /** @var Mage_Core_Model_Email_Template $template */
             $template = $observer->getObject();

@@ -8,8 +8,6 @@
  * @author     Andreas von Studnitz <avs@integer-net.de>
  */
 
-use TijsVerkoyen\CssToInlineStyles;
-
 class Hackathon_ResponsiveEmail_Model_Core_Translate extends Mage_Core_Model_Translate
 {
     /**
@@ -45,7 +43,10 @@ class Hackathon_ResponsiveEmail_Model_Core_Translate extends Mage_Core_Model_Tra
 
         $templateText = (string)$ioAdapter->read($filePath);
 
-        if ($useInk) {
+        if ($useInk
+            && (!(Mage::app()->getRequest()->getControllerName() == 'system_email_template')
+            || !(Mage::app()->getRequest()->getActionName() == 'edit'))) {
+            // Don't inline styles when loading a template in backend
             $templateText = $this->addInlineStyles($templateText);
         }
 
@@ -83,7 +84,6 @@ class Hackathon_ResponsiveEmail_Model_Core_Translate extends Mage_Core_Model_Tra
      *
      * @param string $templateText
      * @return string
-     * @todo Don't do this when creating transactional emails.
      * We will need to implement this again in an "afterLoad" observer of the transactional email template.
      */
     public function addInlineStyles($templateText)
