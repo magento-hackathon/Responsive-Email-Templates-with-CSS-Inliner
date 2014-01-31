@@ -16,5 +16,17 @@
                 </rewrite>
             </core>
         </models>
+
+        <events>
+            <core_abstract_load_after>
+                <observers>
+                    <responsive_email>
+                        <type>singleton</type>
+                        <class>responsive_email/observer</class>
+                        <method>coreAbstractLoadAfter</method>
+                    </responsive_email>
+                </observers>
+            </core_abstract_load_after>
+        </events>
     </global>
 </config>
