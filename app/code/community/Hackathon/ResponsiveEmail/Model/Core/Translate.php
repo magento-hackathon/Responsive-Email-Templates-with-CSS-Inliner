@@ -9,8 +9,6 @@
  */
 class Hackathon_ResponsiveEmail_Model_Core_Translate extends Mage_Core_Model_Translate
 {
-
-
     /**
      * Retrive translated template file
      *
@@ -38,7 +36,11 @@ class Hackathon_ResponsiveEmail_Model_Core_Translate extends Mage_Core_Model_Tra
         $ioAdapter = new Varien_Io_File();
         $ioAdapter->open(array('path' => Mage::getBaseDir('locale')));
 
-        return (string)$ioAdapter->read($filePath);
+        $templateText = (string)$ioAdapter->read($filePath);
+
+        $templateText = $this->addInlineStyles($templateText);
+
+        return $templateText;
     }
 
     /**
@@ -65,5 +67,27 @@ class Hackathon_ResponsiveEmail_Model_Core_Translate extends Mage_Core_Model_Tra
             return $filePath;
         }
         return $filePath;
+    }
+
+    /**
+     * Add additional styles to email content
+     *
+     * @param string $templateText
+     * @return string
+     */
+    public function addInlineStyles($templateText)
+    {
+        $newStyles = 'body {background: red;}'; /** @TODO: replace with real content */
+
+        if (preg_match('/<!--@styles\s*(.*?)\s*@-->/s', $templateText, $matches)) {
+            $existingStyles = $matches[1];
+            $newStyles = '<!--@styles' . "\n" . $existingStyles . "\n" . $newStyles . '@-->' . "\n";
+            $templateText = str_replace($matches[0], $newStyles, $templateText);
+        } else {
+            $newStyles = '<!--@styles' . "\n" . $newStyles . "\n" . '@-->' . "\n";
+            $templateText = $newStyles . $templateText;
+        }
+
+        return $templateText;
     }
 }
