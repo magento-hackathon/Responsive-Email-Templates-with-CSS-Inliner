@@ -8,7 +8,12 @@
 "htmlescape var=$customer.password":"Customer Password"}
 @-->
 
-<body>
+<head> <!-- For testing only -->
+<link rel="stylesheet" href="../../../../../skin/frontend/base/default/css/responsive_email/ink.css"> <!-- For testing only -->
+<link rel="stylesheet" href="../../../../../skin/frontend/base/default/css/responsive_email/custom.css"> <!-- For testing only -->
+</head> <!-- For testing only -->
+
+<body class="account-new">
 <table class="body">
     <tr>
         <td class="center" align="center" valign="top">
@@ -18,14 +23,14 @@
                 <table class="body">
                     <tr>
                         <td valign="top">
-                            <a href="{{store url=""}}"><img src="{{var logo_url}}" alt="{{var logo_alt}}" style="margin-bottom:10px;" border="0"/></a></td>
+                            <a href="{{store url=""}}"><img src="{{var logo_url}}" alt="{{var logo_alt}}" border="0"/></a></td>
                     </tr>
                     <!-- [ middle starts here] -->
                     <tr>
                         <td valign="top">
                             <h1>Dear {{htmlescape var=$customer.name}},</h1>
                             <p>Welcome to {{var store.getFrontendName()}}. To log in when visiting our site just click <a href="{{store url="customer/account/"}}">Login</a> or <a href="{{store url="customer/account/"}}">My Account</a> at the top of every page, and then enter your e-mail address and password.</p>
-                            <p style="border:1px solid #E0E0E0; font-size:12px; line-height:16px; margin:0; padding:13px 18px; background:#f9f9f9;">
+                            <p class="credentials">
                                 Use the following values when prompted to log in:<br/>
                                 <strong>E-mail</strong>: {{var customer.email}}<br/>
                                 <strong>Password</strong>: {{htmlescape var=$customer.password}}<p>
@@ -42,7 +47,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td bgcolor="#EAEAEA" align="center" style="background:#EAEAEA; text-align:center;"><center><p style="font-size:12px; margin:0;">Thank you again, <strong>{{var store.getFrontendName()}}</strong></p></center></td>
+                        <td bgcolor="#EAEAEA" align="center" class="thankyou"><center><p>Thank you again, <strong>{{var store.getFrontendName()}}</strong></p></center></td>
                     </tr>
                 </table>
 
