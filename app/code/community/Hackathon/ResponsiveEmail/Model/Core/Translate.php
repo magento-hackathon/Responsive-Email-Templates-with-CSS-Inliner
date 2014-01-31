@@ -99,14 +99,12 @@ class Hackathon_ResponsiveEmail_Model_Core_Translate extends Mage_Core_Model_Tra
             $subject = $matches[1];
         }
 
-        $newStyles = $this->getCssFileContent('ink.css') . $this->getCssFileContent('custom.css');
+        $rawTemplateHtml = $this->_getRawTemplateHtml($templateText);
 
-        $cssToInlineStyles = new TijsVerkoyen_CssToInlineStyles(
-            $this->_getRawTemplateHtml($templateText),
-            $existingStyles . "\n" . $newStyles
-        );
+        $inlinedHtml = Mage::getSingleton('responsive_email/inliner')
+            ->getHtmlWithInlinedStyles($rawTemplateHtml, $existingStyles);
 
-        return '<!--@subject ' . $subject . ' @-->' . "\n" . $cssToInlineStyles->convert();
+        return '<!--@subject ' . $subject . ' @-->' . "\n" . $inlinedHtml;
     }
 
     /**
@@ -125,22 +123,5 @@ class Hackathon_ResponsiveEmail_Model_Core_Translate extends Mage_Core_Model_Tra
         $templateText = preg_replace('#\{\*.*\*\}#suU', '', $templateText);
 
         return $templateText;
-    }
-
-    /**
-     * @param string $filename
-     * @return string
-     */
-    public function getCssFileContent($filename)
-    {
-        $filename = Mage::getDesign()->getFilename(
-            'css' . DS . 'responsive_email' . DS . $filename,
-            array(
-                '_type' => 'skin',
-                '_default' => false,
-            )
-        );
-
-        return file_get_contents($filename);
     }
 }
