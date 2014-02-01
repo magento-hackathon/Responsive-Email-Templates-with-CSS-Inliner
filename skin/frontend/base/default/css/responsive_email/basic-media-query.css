@@ -1,11 +1,7 @@
-@media (min-width: 600px) {
+@media (max-width: 600px) {
     .box {
-        float: left;
-        width: 160px;
-        margin: 10px;
-    }
-
-    .box .image-wrapper {
-        float: none;
+        width: 100% !important;
+        margin: 0px !important;
+        margin-bottom: 10px !important;
     }
 }

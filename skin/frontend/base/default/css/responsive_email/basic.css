@@ -64,16 +64,16 @@ h1 {
 
 .box {
     float: left;
-    margin-bottom: 10px;
+    width: 160px;
+    margin: 10px;
 }
 
 .box .image-wrapper {
     margin-bottom: 10px;
-    float: left;
 }
 
 h2 {
-    font-size: 18px;
+    font-size: 16px;
     margin-bottom: 5px;
 }
 
