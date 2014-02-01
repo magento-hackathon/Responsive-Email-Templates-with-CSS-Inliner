@@ -7,18 +7,3 @@ h5 {font-size: 15px;}
 h6 {font-size: 14px;}
 
 /* Magento custom styles */
-.credentials {
-    border: 1px solid #E0E0E0;
-    font-size:12px;
-    line-height:16px;
-    margin:0;
-    padding:13px 18px;
-    background:#f9f9f9;
-}
-.thankyou {
-    background:#EAEAEA;
-    text-align:center;
-}
-.thankyou p {
-    margin: 0;
-}
