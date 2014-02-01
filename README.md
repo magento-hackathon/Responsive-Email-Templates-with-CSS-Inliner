@@ -12,6 +12,8 @@ Install using modman.
 
 Customize your New Account email in *System* > *Transactional Emails*, using the HTML in `template/email_responsive/ink/account_new.html`
 
+Also, put `/** external-responsive-css */` in the *Template Styles* field.
+
 *Note: An alternate template is available at `template/email_responsive/basic/account_new.html` - if you use it, change Mail Style Settings to use basic.css for inline and basic-media-query.css for non-inline.*
 
 Then test it out using preview or by creating an account to generate a welcome email to yourself.
