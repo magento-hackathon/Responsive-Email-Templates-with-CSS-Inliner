@@ -3,4 +3,4 @@ app/code/community/Hackathon/ResponsiveEmail                                app/
 lib/TijsVerkoyen                                                            lib/TijsVerkoyen
 skin/frontend/base/default/css/responsive_email                             skin/frontend/base/default/css/responsive_email
 skin/frontend/base/default/css/responsive_email                             skin/adminhtml/default/default/css/responsive_email
-app/locale/en_US/template/email/email_responsive                            app/locale/en_US/template/email/email_responsive
+app/locale/en_US/template/email/responsive_email                            app/locale/en_US/template/email/responsive_email
