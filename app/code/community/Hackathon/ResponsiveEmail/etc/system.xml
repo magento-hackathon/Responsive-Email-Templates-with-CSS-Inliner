@@ -19,11 +19,24 @@
                                 is relative to skin/frontend/base/default/css/responsive_email.
                             </comment>
                             <frontend_type>text</frontend_type>
-                            <sort_order>10</sort_order>
+                            <sort_order>100</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </inline_css>
+                        <external_css_not_inline translate="label">
+                            <label>External CSS Files</label>
+                            <comment>
+                                Comma-separated list of CSS files that will get pulled
+                                into a style tag.  Things like media queries can't be
+                                converted to inline CSS.
+                            </comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>200</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </external_css_not_inline>
                     </fields>
                 </mail_style>
             </groups>

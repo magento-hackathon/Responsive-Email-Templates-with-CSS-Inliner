@@ -22,7 +22,10 @@ class Hackathon_ResponsiveEmail_Model_Inliner
             $existingStyles . "\n" . $newStyles
         );
 
-        return $cssToInlineStyles->convert();
+        $htmlWithInlineCss = $cssToInlineStyles->convert();
+        $html = "<style type='text/css'>" . $this->_getAdditionalCssNotInline() . "</style>" . $htmlWithInlineCss;
+
+        return $html;
     }
 
     /**
@@ -33,6 +36,17 @@ class Hackathon_ResponsiveEmail_Model_Inliner
         $css = '';
         $inlineCssFiles = Mage::helper('responsive_email')->getInlineCssFilesArray();
         foreach ($inlineCssFiles as $file) {
+            $css = $this->_getCssFileContent($file) . "\n";
+        }
+
+        return $css;
+    }
+
+    protected function _getAdditionalCssNotInline()
+    {
+        $css = '';
+        $cssFiles = Mage::helper('responsive_email')->getNotInlineCssFilesArray();
+        foreach ($cssFiles as $file) {
             $css = $this->_getCssFileContent($file) . "\n";
         }
 

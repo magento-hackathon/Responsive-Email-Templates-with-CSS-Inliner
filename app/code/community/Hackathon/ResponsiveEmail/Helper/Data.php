@@ -17,4 +17,9 @@ class Hackathon_ResponsiveEmail_Helper_Data extends Mage_Core_Helper_Abstract
     {
         return $this->getConfigCsvAsArray('system/mail_style/inline_css');
     }
+
+    public function getNotInlineCssFilesArray()
+    {
+        return $this->getConfigCsvAsArray('system/mail_style/external_css_not_inline');
+    }
 }

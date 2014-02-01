@@ -1,0 +1,94 @@
+body {
+    background-color: rgb(237, 237, 237);
+    padding: 0;
+    margin: 0;
+    font-family: arial;
+    font-size: 16px;
+    color: #333332;
+    line-height: 23px;
+}
+
+h1, h2, h3 {
+    margin: 0;
+    padding: 0;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+    margin-bottom: 15px;
+}
+
+.template-container {
+    background-color: rgb(237, 237, 237);
+}
+
+.template {
+    max-width: 550px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    padding: 15px;
+}
+
+.header {
+    text-align: center;
+    border-bottom: solid 1px rgb(237, 237, 237);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.header .image-wrapper {
+    max-width: 150px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.image-wrapper img {
+    width: 100%;
+}
+
+.content {
+    text-align: left;
+    clear: both;
+}
+
+h1 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.boxes {
+    clear: both;
+}
+
+.box {
+    float: left;
+    margin-bottom: 10px;
+}
+
+.box .image-wrapper {
+    margin-bottom: 10px;
+    float: left;
+}
+
+h2 {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.footer {
+    border-top: solid 1px rgb(237, 237, 237);
+    padding-top: 20px;
+    clear: both;
+}
+
+.footer .image-wrapper {
+    width: 40px;
+    float: left;
+    margin-right: 10px;
+}
+
+.footer p {
+    margin-bottom: 0px;
+}
