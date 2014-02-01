@@ -17,6 +17,8 @@ class Hackathon_ResponsiveEmail_Model_Inliner
     public function getHtmlWithInlinedStyles($rawTemplateHtml, $existingStyles)
     {
         $newStyles = $this->_getAdditionalCss();
+        $rawTemplateHtml = $this->_includeExternalHtml($rawTemplateHtml);
+
         $cssToInlineStyles = new TijsVerkoyen_CssToInlineStyles(
             $rawTemplateHtml,
             $existingStyles . "\n" . $newStyles
@@ -49,6 +51,34 @@ class Hackathon_ResponsiveEmail_Model_Inliner
         }
 
         return $html;
+    }
+
+    protected function _includeExternalHtml($html)
+    {
+        $pattern = '<include file="(.*?)" \/>';
+        preg_match_all('/' . $pattern . '/', $html, $matches);
+
+        if (empty($matches) || !isset($matches[1])) {
+            return $html;
+        }
+
+        foreach ($matches[1] as $match) {
+            $contents = $this->_getTemplateContents($match);
+            $html = preg_replace('/' . '(' . $pattern . ')' . '/', $contents, $html);
+        }
+
+        return $html;
+    }
+
+    protected function _getTemplateContents($templatePath)
+    {
+        $locale = Mage::app()->getLocale()->getLocaleCode();
+
+        $templateText = Mage::app()->getTranslator()->getTemplateFile(
+            $templatePath, 'email', $locale
+        );
+
+        return $templateText;
     }
 
     /**
