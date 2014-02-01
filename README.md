@@ -16,6 +16,12 @@ Customize your New Account email in *System* > *Transactional Emails*, using the
 
 Then test it out using preview or by creating an account to generate a welcome email to yourself.
 
+#### Use SASS (Optional)
+
+If you'd like to use SASS, just drop a file in `skin/frontend/base/default/sass/responsive_email`, 
+and from `skin/frontend/base/default/` run `compass watch`.  The css will be generated into
+`skin/frontend/base/default/css/responsive_email`.  See `basic.scss` as an example.
+
 #### Customization
 
 You can add your own stylesheet to add some customization on top of our base CSS by going into *System* > *Configuration* > *System* > *Mail Style Settings*.
