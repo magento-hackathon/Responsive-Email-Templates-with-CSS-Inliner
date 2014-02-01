@@ -36,7 +36,7 @@ class Hackathon_ResponsiveEmail_Model_Inliner
         $css = '';
         $inlineCssFiles = Mage::helper('responsive_email')->getInlineCssFilesArray();
         foreach ($inlineCssFiles as $file) {
-            $css = $this->_getCssFileContent($file) . "\n";
+            $css .= $this->_getCssFileContent($file) . "\n";
         }
 
         return $css;
@@ -47,7 +47,7 @@ class Hackathon_ResponsiveEmail_Model_Inliner
         $css = '';
         $cssFiles = Mage::helper('responsive_email')->getNotInlineCssFilesArray();
         foreach ($cssFiles as $file) {
-            $css = $this->_getCssFileContent($file) . "\n";
+            $css .= $this->_getCssFileContent($file) . "\n";
         }
 
         return $css;
