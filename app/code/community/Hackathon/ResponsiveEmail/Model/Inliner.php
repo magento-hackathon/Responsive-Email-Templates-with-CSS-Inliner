@@ -30,7 +30,13 @@ class Hackathon_ResponsiveEmail_Model_Inliner
      */
     protected function _getAdditionalCss()
     {
-        return $this->_getCssFileContent('ink.css') . "\n" . $this->_getCssFileContent('custom.css');
+        $css = '';
+        $inlineCssFiles = Mage::helper('responsive_email')->getInlineCssFilesArray();
+        foreach ($inlineCssFiles as $file) {
+            $css = $this->_getCssFileContent($file) . "\n";
+        }
+
+        return $css;
     }
 
     /**

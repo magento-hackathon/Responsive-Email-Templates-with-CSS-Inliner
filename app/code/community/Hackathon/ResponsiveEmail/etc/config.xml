@@ -17,6 +17,12 @@
             </core>
         </models>
 
+        <helpers>
+            <responsive_email>
+                <class>Hackathon_ResponsiveEmail_Helper</class>
+            </responsive_email>
+        </helpers>
+
         <events>
             <core_abstract_load_after>
                 <observers>
@@ -29,4 +35,12 @@
             </core_abstract_load_after>
         </events>
     </global>
+
+    <default>
+        <system>
+            <mail_style>
+                <inline_css>custom.css, ink.css</inline_css>
+            </mail_style>
+        </system>
+    </default>
 </config>

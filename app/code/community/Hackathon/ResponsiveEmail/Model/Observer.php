@@ -21,7 +21,7 @@ class Hackathon_ResponsiveEmail_Model_Observer
             /** @var Mage_Core_Model_Email_Template $template */
             $template = $observer->getObject();
 
-            if (strpos($template->getTemplateText(), 'ink.css') !== false) {
+            if ($this->_shouldInlineCss($template)) {
                 $template->setTemplateText(Mage::getSingleton('responsive_email/inliner')
                     ->getHtmlWithInlinedStyles(
                         $template->getTemplateText(),
@@ -30,5 +30,24 @@ class Hackathon_ResponsiveEmail_Model_Observer
                 );
             }
         }
+    }
+
+    /**
+     * @param $template Mage_Core_Model_Email_Template
+     */
+    protected function _shouldInlineCss($template)
+    {
+        // I left this in place for backwards compatibility, but I think that
+        // some sort of trigger in the template styles field might be a little
+        // cleaner.
+        if (strpos($template->getTemplateText(), 'ink.css') !== false) {
+            return true;
+        }
+
+        if (strpos($template->getTemplateStyles(), 'external-responsive-css') !== false) {
+            return true;
+        }
+
+        return false;
     }
 }
