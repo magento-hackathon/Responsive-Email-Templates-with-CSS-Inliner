@@ -2,4 +2,4 @@ app/etc/modules/Hackathon_ResponsiveEmail.xml                               app/
 app/code/community/Hackathon/ResponsiveEmail                                app/code/community/Hackathon/ResponsiveEmail
 lib/TijsVerkoyen                                                            lib/TijsVerkoyen
 skin/frontend/base/default/css/responsive_email                             skin/frontend/base/default/css/responsive_email
-skin/adminhtml/default/default/css/responsive_email                         skin/adminhtml/default/default/css/responsive_email
+skin/frontend/base/default/css/responsive_email                             skin/adminhtml/default/default/css/responsive_email
