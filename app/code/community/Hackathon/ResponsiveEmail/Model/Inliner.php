@@ -24,6 +24,29 @@ class Hackathon_ResponsiveEmail_Model_Inliner
 
         $htmlWithInlineCss = $cssToInlineStyles->convert();
         $html = "<style type='text/css'>" . $this->_getAdditionalCssNotInline() . "</style>" . $htmlWithInlineCss;
+        $html = $this->_fixTemplateVariables($html);
+
+        return $html;
+    }
+
+    /**
+     * The inliner appears to be url encoding things inside of <a href="..."> or <img src="...">
+     * which is breaking the template variables, for example {{var logo_url}}.  So what I'm doing
+     * here is just undoing that.  It's a bit of a hack, but hey, that's what hackathons are for!
+     *
+     * @param $html
+     * @return mixed
+     */
+    protected function _fixTemplateVariables($html)
+    {
+        preg_match_all("/" . '(href|src)="(.*?)"' . '/', $html, $matches);
+        if (empty($matches) || !isset($matches[2])) {
+            return $html;
+        }
+
+        foreach ($matches[2] as $match) {
+            $html = str_replace($match, urldecode($match), $html);
+        }
 
         return $html;
     }
