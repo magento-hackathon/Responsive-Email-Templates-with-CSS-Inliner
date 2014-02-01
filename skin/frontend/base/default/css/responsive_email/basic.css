@@ -1,4 +1,3 @@
-/* line 5, ../../sass/responsive_email/basic.scss */
 body {
   background-color: #ededed;
   padding: 0;
@@ -9,29 +8,24 @@ body {
   line-height: 23px;
 }
 
-/* line 15, ../../sass/responsive_email/basic.scss */
 h1, h2, h3 {
   margin: 0;
   padding: 0;
 }
 
-/* line 20, ../../sass/responsive_email/basic.scss */
 p {
   margin: 0;
   padding: 0;
   margin-bottom: 15px;
 }
 
-/* line 26, ../../sass/responsive_email/basic.scss */
 .image-wrapper img {
   width: 100%;
 }
 
-/* line 30, ../../sass/responsive_email/basic.scss */
 .template-container {
   background-color: #ededed;
 }
-/* line 33, ../../sass/responsive_email/basic.scss */
 .template-container .template {
   max-width: 550px;
   margin-left: auto;
@@ -39,61 +33,68 @@ p {
   background-color: white;
   padding: 15px;
 }
-/* line 41, ../../sass/responsive_email/basic.scss */
 .template-container .header {
   text-align: center;
   border-bottom: solid 1px #d4d4d4;
   padding-bottom: 10px;
   margin-bottom: 20px;
 }
-/* line 47, ../../sass/responsive_email/basic.scss */
 .template-container .header .image-wrapper {
   max-width: 150px;
   margin-left: auto;
   margin-right: auto;
 }
-/* line 54, ../../sass/responsive_email/basic.scss */
 .template-container .content {
   text-align: left;
   clear: both;
 }
-/* line 58, ../../sass/responsive_email/basic.scss */
 .template-container .content h1 {
   font-size: 20px;
   margin-bottom: 10px;
 }
-/* line 63, ../../sass/responsive_email/basic.scss */
 .template-container .content .boxes {
   clear: both;
 }
-/* line 66, ../../sass/responsive_email/basic.scss */
 .template-container .content .boxes .box {
   float: left;
   width: 160px;
   margin: 10px;
 }
-/* line 71, ../../sass/responsive_email/basic.scss */
 .template-container .content .boxes .box .image-wrapper {
   margin-bottom: 10px;
 }
-/* line 75, ../../sass/responsive_email/basic.scss */
 .template-container .content .boxes .box h2 {
   font-size: 16px;
   margin-bottom: 5px;
 }
-/* line 83, ../../sass/responsive_email/basic.scss */
+.template-container .call-to-action {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+  width: 100%;
+  text-align: center;
+}
+.template-container .button {
+  margin: 0;
+  padding: 10px 16px;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  display: inline-block;
+  background-color: #f47526;
+  color: white;
+  text-decoration: none;
+}
 .template-container .footer {
   border-top: solid 1px #d4d4d4;
   padding-top: 20px;
   clear: both;
 }
-/* line 88, ../../sass/responsive_email/basic.scss */
 .template-container .footer .image-wrapper {
   width: 40px;
   float: left;
   margin-right: 10px;
 }
-/* line 94, ../../sass/responsive_email/basic.scss */
 .template-container .footer p {
   margin-bottom: 0px;
 }

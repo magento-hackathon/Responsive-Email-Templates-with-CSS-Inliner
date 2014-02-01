@@ -4,4 +4,9 @@
         margin: 0px !important;
         margin-bottom: 10px !important;
     }
+
+    .button {
+        display: block !important;
+        clear: both;
+    }
 }
