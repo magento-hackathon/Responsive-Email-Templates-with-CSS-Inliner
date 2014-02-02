@@ -12,7 +12,7 @@
             </responsive_email>
             <core>
                 <rewrite>
-                    <translate>Hackathon_ResponsiveEmail_Model_Core_Translate</translate>
+                    <email_template>Hackathon_ResponsiveEmail_Model_Email_Template</email_template>
                 </rewrite>
             </core>
         </models>
@@ -23,17 +23,11 @@
             </responsive_email>
         </helpers>
 
-        <events>
-            <core_abstract_load_after>
-                <observers>
-                    <responsive_email>
-                        <type>singleton</type>
-                        <class>responsive_email/observer</class>
-                        <method>coreAbstractLoadAfter</method>
-                    </responsive_email>
-                </observers>
-            </core_abstract_load_after>
-        </events>
+        <blocks>
+            <responsive_email>
+                <class>Hackathon_ResponsiveEmail_Block</class>
+            </responsive_email>
+        </blocks>
     </global>
 
     <default>

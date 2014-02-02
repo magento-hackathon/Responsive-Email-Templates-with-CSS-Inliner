@@ -4,3 +4,4 @@ lib/TijsVerkoyen                                                            lib/
 skin/frontend/base/default/css/responsive_email                             skin/frontend/base/default/css/responsive_email
 skin/frontend/base/default/css/responsive_email                             skin/adminhtml/default/default/css/responsive_email
 app/locale/en_US/template/email/responsive_email                            app/locale/en_US/template/email/responsive_email
+app/design/frontend/base/default/template/responsive_email                  app/design/frontend/base/default/template/responsive_email
