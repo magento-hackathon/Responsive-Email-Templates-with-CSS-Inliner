@@ -9,4 +9,10 @@
         display: block !important;
         clear: both;
     }
+
+    .blocks .block {
+        width: 97% !important;
+        margin: 0% !important;
+        margin-bottom: 15px !important;
+    }
 }

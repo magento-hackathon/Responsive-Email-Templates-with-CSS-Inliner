@@ -23,6 +23,10 @@ p {
   width: 100%;
 }
 
+.clearfix {
+  clear: both;
+}
+
 .template-container {
   background-color: #ededed;
 }
@@ -52,6 +56,9 @@ p {
   font-size: 20px;
   margin-bottom: 10px;
 }
+.template-container .content h2 {
+  font-size: 16px;
+}
 .template-container .content .boxes {
   clear: both;
 }
@@ -64,8 +71,31 @@ p {
   margin-bottom: 10px;
 }
 .template-container .content .boxes .box h2 {
-  font-size: 16px;
   margin-bottom: 5px;
+}
+.template-container .content .blocks {
+  clear: both;
+  margin-bottom: 20px;
+}
+.template-container .content .blocks .block {
+  border: solid 1px #d4d4d4;
+  float: left;
+  width: 47%;
+  margin: 1%;
+}
+.template-container .content .blocks .block .block-heading {
+  background-color: #ededed;
+  padding: 5px;
+}
+.template-container .content .blocks .block .block-inner {
+  padding: 10px;
+}
+.template-container .content .clearfix {
+  margin-bottom: 20px;
+}
+.template-container .content .testclass {
+  background-color: #ededed;
+  border: solid 1px black;
 }
 .template-container .call-to-action {
   margin-left: auto;
@@ -73,6 +103,7 @@ p {
   margin-bottom: 20px;
   width: 100%;
   text-align: center;
+  clear: both;
 }
 .template-container .button {
   margin: 0;

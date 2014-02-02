@@ -1,0 +1,86 @@
+<div class='template-container'>
+    <div class='template'>
+        <div class="header">
+            <div class='image-wrapper'>
+                <a href="{{var logo_url}}">
+                    <img src="{{var logo_url}}">
+                </a>
+            </div>
+        </div>
+
+        <div class='content'>
+            <h1>Hi {{var order.customer_firstname}},</h1>
+            <p>
+                Thank you for your order from {{var store.getFrontendName()}}.
+                Once your package ships we will send an email with a link to track your order.
+                You can check the status of your order by <a href="{{store url="customer/account/"}}" style="color:#1E7EC8;">logging into your account</a>.
+                If you have any questions about your order please contact us at
+                <a href="mailto:{{config path='trans_email/ident_support/email'}}" style="color:#1E7EC8;">{{config path='trans_email/ident_support/email'}}</a> or call us at <span class="nobr">{{config path='general/store_information/phone'}}</span> Monday - Friday, 8am - 5pm PST.
+            </p>
+            <div class='blocks'>
+                <div class='block billing'>
+                    <div class='block-heading'>
+                        <h2>Billing Address</h2>
+                    </div>
+                    <div class='block-inner'>
+                        {{var order.getBillingAddress().getFirstname()}}
+                        {{var order.getBillingAddress().getLastname()}}
+                        <br>{{var order.getBillingAddress().getStreet1()}}
+                        <br>{{var order.getBillingAddress().getCity()}},
+                        {{var order.getBillingAddress().getRegion()}},
+                        {{var order.getBillingAddress().getPostcode()}}
+                    </div>
+                </div>
+
+                <div class='block shipping'>
+                    <div class='block-heading'>
+                        <h2>Shipping Address</h2>
+                    </div>
+                    <div class='block-inner'>
+                        {{var order.getShippingAddress().getFirstname()}}
+                        {{var order.getShippingAddress().getLastname()}}
+                        <br>{{var order.getShippingAddress().getStreet1()}}
+                        <br>{{var order.getShippingAddress().getCity()}},
+                        {{var order.getShippingAddress().getRegion()}},
+                        {{var order.getShippingAddress().getPostcode()}}
+                    </div>
+                </div>
+
+                <div class='block payment'>
+                    <div class='block-heading'>
+                        <h2>Payment Method</h2>
+                    </div>
+                    <div class='block-inner'>
+                        {{var payment_html}}
+                    </div>
+                </div>
+
+                <div class='block shipping'>
+                    <div class='block-heading'>
+                        <h2>Shipping Method</h2>
+                    </div>
+                    <div class='block-inner'>
+                        {{var order.getShippingDescription()}}
+                    </div>
+                </div>
+            </div>
+            <div class='clearfix' ></div>
+
+            <div class='items'>
+                {{block type='responsive_email/order_items' area='frontend' template='responsive_email/items.phtml' order=$order}}
+            </div>
+
+            <div class='call-to-action'>
+                <a class='button' href="{{var store_url}}">Go To The Store!</a>
+            </div>
+        </div>
+
+        <div class='footer'>
+            <div class='image-wrapper'>
+                <img src="http://placekitten.com/g/40/40">
+            </div>
+            <p>Cheers,</p>
+            <p><b>Bob Smith</b> with <b>The Sweet Magento Store</b></p>
+        </div>
+    </div>
+</div>

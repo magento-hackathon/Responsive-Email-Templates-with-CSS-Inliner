@@ -1,0 +1,25 @@
+<?php
+
+/**
+ * @var $this Hackathon_ResponsiveEmail_Block_Order_Items
+ * @var $item Mage_Sales_Model_Order_Item
+ */
+
+/** @var $order Mage_Sales_Model_Order */
+$order = $this->getOrder();
+
+?>
+
+<?php echo $order->getIncrementId(); ?>
+<div class='testclass'>
+    here12345
+</div>
+
+<?php foreach ($order->getAllItems() as $item): ?>
+    <tr>
+        <td><?php echo $item->getName(); ?></td>
+        <td><?php echo $item->getSku(); ?></td>
+        <td><?php echo $item->getQtyOrdered(); ?></td>
+        <td><?php echo $item->getPrice(); ?></td>
+    </tr>
+<?php endforeach; ?>

@@ -29,6 +29,10 @@ p {
     width: 100%;
 }
 
+.clearfix {
+    clear: both;
+}
+
 .template-container {
     background-color: $background-color;
 
@@ -62,6 +66,10 @@ p {
             margin-bottom: 10px;
         }
 
+        h2 {
+           font-size: 16px;
+        }
+
         .boxes {
             clear: both;
 
@@ -75,10 +83,39 @@ p {
                 }
 
                 h2 {
-                    font-size: 16px;
                     margin-bottom: 5px;
                 }
             }
+        }
+
+        .blocks {
+            clear: both;
+            margin-bottom: 20px;
+
+            .block {
+                border: solid 1px $border-color-light;
+                float: left;
+                width: 47%;
+                margin: 1%;
+
+                .block-heading {
+                    background-color: $background-color;
+                    padding: 5px;
+                }
+
+                .block-inner {
+                    padding: 10px;
+                }
+            }
+        }
+
+        .clearfix {
+            margin-bottom: 20px;
+        }
+
+        .testclass {
+            background-color: $background-color;
+            border: solid 1px black;
         }
     }
 
