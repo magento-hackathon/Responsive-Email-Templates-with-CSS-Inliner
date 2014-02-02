@@ -75,7 +75,8 @@ p {
 }
 .template-container .content .blocks {
   clear: both;
-  margin-bottom: 20px;
+  overflow: hidden;
+  margin-bottom: 10px;
 }
 .template-container .content .blocks .block {
   border: solid 1px #d4d4d4;
@@ -93,9 +94,49 @@ p {
 .template-container .content .clearfix {
   margin-bottom: 20px;
 }
-.template-container .content .testclass {
+.template-container .content .data-table {
+  width: 96%;
+  margin-left: 1%;
+  margin-right: 1%;
+  border: solid 1px #d4d4d4;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+.template-container .content .data-table .table-header .cell, .template-container .content .data-table .table-contents .cell {
+  width: 50px;
+  padding-right: 10px;
+  padding: 5px;
+}
+.template-container .content .data-table .table-header .cell.name, .template-container .content .data-table .table-contents .cell.name {
+  width: 55%;
+}
+.template-container .content .data-table .table-header .cell.name .sku, .template-container .content .data-table .table-contents .cell.name .sku {
+  font-size: 14px;
+}
+.template-container .content .data-table .table-header .cell.quantity, .template-container .content .data-table .table-contents .cell.quantity {
+  width: 10%;
+}
+.template-container .content .data-table .table-header .cell.price, .template-container .content .data-table .table-contents .cell.price {
+  width: 10%;
+}
+.template-container .content .data-table .table-header {
   background-color: #ededed;
-  border: solid 1px black;
+  clear: both;
+  overflow: hidden;
+  font-weight: bold;
+}
+.template-container .content .data-table .table-header .cell {
+  float: left;
+}
+.template-container .content .data-table .table-header.secondary {
+  display: none;
+}
+.template-container .content .data-table .table-contents .row {
+  clear: both;
+  overflow: hidden;
+}
+.template-container .content .data-table .table-contents .row .cell {
+  float: left;
 }
 .template-container .call-to-action {
   margin-left: auto;

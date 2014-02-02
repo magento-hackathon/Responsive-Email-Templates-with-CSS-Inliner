@@ -14,8 +14,6 @@
                 Thank you for your order from {{var store.getFrontendName()}}.
                 Once your package ships we will send an email with a link to track your order.
                 You can check the status of your order by <a href="{{store url="customer/account/"}}" style="color:#1E7EC8;">logging into your account</a>.
-                If you have any questions about your order please contact us at
-                <a href="mailto:{{config path='trans_email/ident_support/email'}}" style="color:#1E7EC8;">{{config path='trans_email/ident_support/email'}}</a> or call us at <span class="nobr">{{config path='general/store_information/phone'}}</span> Monday - Friday, 8am - 5pm PST.
             </p>
             <div class='blocks'>
                 <div class='block billing'>
@@ -64,14 +62,18 @@
                     </div>
                 </div>
             </div>
-            <div class='clearfix' ></div>
 
             <div class='items'>
                 {{block type='responsive_email/order_items' area='frontend' template='responsive_email/items.phtml' order=$order}}
             </div>
 
+            <p>
+                If you have any questions about your order please contact us at
+                <a href="mailto:{{config path='trans_email/ident_support/email'}}" style="color:#1E7EC8;">{{config path='trans_email/ident_support/email'}}</a> or call us at <span class="nobr">{{config path='general/store_information/phone'}}</span> Monday - Friday, 8am - 5pm PST.
+            </p>
+
             <div class='call-to-action'>
-                <a class='button' href="{{var store_url}}">Go To The Store!</a>
+                <a class='button' href="{{var store_url}}">Refer A Friend!</a>
             </div>
         </div>
 

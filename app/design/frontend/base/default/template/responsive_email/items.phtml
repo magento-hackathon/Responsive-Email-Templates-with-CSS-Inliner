@@ -7,19 +7,26 @@
 
 /** @var $order Mage_Sales_Model_Order */
 $order = $this->getOrder();
+$items = $order->getAllItems();
 
 ?>
 
-<?php echo $order->getIncrementId(); ?>
-<div class='testclass'>
-    here12345
+<div class='data-table'>
+    <div class='table-contents'>
+        <?php $i = 0; foreach ($items as $item): $i++; ?>
+            <div class='table-header <?php if ($i > 1) { echo "secondary"; }?>'>
+                <div class='cell name'>Item</div>
+                <div class='cell quantity'>Qty</div>
+                <div class='cell price'>Price</div>
+            </div>
+            <div class='row'>
+                <div class='cell name'>
+                    <?php echo $item->getName(); ?>
+                    <div class='sku'><?php echo $item->getSku(); ?></div>
+                </div>
+                <div class='cell quantity'><?php echo $item->getQtyOrdered(); ?></div>
+                <div class='cell price'><?php echo Mage::helper('core')->currency($item->getPrice(), true, false); ?></div>
+            </div>
+        <?php endforeach; ?>
+    </div>
 </div>
-
-<?php foreach ($order->getAllItems() as $item): ?>
-    <tr>
-        <td><?php echo $item->getName(); ?></td>
-        <td><?php echo $item->getSku(); ?></td>
-        <td><?php echo $item->getQtyOrdered(); ?></td>
-        <td><?php echo $item->getPrice(); ?></td>
-    </tr>
-<?php endforeach; ?>

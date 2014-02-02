@@ -1,6 +1,6 @@
 @media (max-width: 600px) {
-    .box {
-        width: 100% !important;
+    .box, .data-table {
+        width: 99% !important;
         margin: 0px !important;
         margin-bottom: 10px !important;
     }
@@ -10,9 +10,25 @@
         clear: both;
     }
 
+    .blocks {
+        margin-bottom: 0px !important;
+    }
+
     .blocks .block {
-        width: 97% !important;
+        width: 99% !important;
         margin: 0% !important;
         margin-bottom: 15px !important;
+    }
+
+    .data-table .table-contents {
+        font-size: 14px !important;
+    }
+
+    .data-table .table-header .cell.name, .data-table .table-contents .cell.name {
+        width: 100px !important;
+    }
+
+    .data-table .table-header .cell.quantity, .data-table .table-contents .cell.quantity, .data-table .table-header .cell.price, .data-table .table-contents .cell.price {
+        width: 50px !important;
     }
 }
