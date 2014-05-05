@@ -10,11 +10,6 @@
             <responsive_email>
                 <class>Hackathon_ResponsiveEmail_Model</class>
             </responsive_email>
-            <core>
-                <rewrite>
-                    <email_template>Hackathon_ResponsiveEmail_Model_Email_Template</email_template>
-                </rewrite>
-            </core>
         </models>
 
         <helpers>
@@ -28,7 +23,42 @@
                 <class>Hackathon_ResponsiveEmail_Block</class>
             </responsive_email>
         </blocks>
+        <events>
+            <controller_front_init_before>
+                <observers>
+                    <responsive_email>
+                        <type>singleton</type>
+                        <class>responsive_email/observer</class>
+                        <method>adjustRewrite</method>
+                    </responsive_email>
+                </observers>
+            </controller_front_init_before>
+        </events>
     </global>
+
+    <crontab>
+        <events>
+            <always>
+                <observers>
+                    <responsive_email>
+                        <type>singleton</type>
+                        <class>responsive_email/observer</class>
+                        <method>adjustRewrite</method>
+                    </responsive_email>
+                </observers>
+            </always>
+            <default>
+                <observers>
+                    <responsive_email>
+                        <type>singleton</type>
+                        <class>responsive_email/observer</class>
+                        <method>adjustRewrite</method>
+                    </responsive_email>
+                </observers>
+
+            </default>
+        </events>
+    </crontab>
 
     <default>
         <system>
