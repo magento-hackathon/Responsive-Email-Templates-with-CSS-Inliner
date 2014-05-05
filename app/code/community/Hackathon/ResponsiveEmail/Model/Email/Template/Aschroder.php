@@ -1,0 +1,6 @@
+<?php
+
+class Hackathon_ResponsiveEmail_Model_Email_Template_Aschroder extends Aschroder_SMTPPro_Model_Email_Template
+{
+    use Hackathon_ResponsiveEmail_Model_Email_Template_Trait;
+}
